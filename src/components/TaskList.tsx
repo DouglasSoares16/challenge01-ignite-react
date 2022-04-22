@@ -15,18 +15,16 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
-    if (newTaskTitle) {
-      let task = {
-        id: tasks.length + 1,
-        title: newTaskTitle,
-        isComplete: false
-      };
+    if (!newTaskTitle) return;
 
-      setTasks([...tasks, task]);
-    }
-    else {
-      alert("Digite o nome do 'Todo'");
-    }
+    const task = {
+      id: tasks.length + 1,
+      title: newTaskTitle,
+      isComplete: false
+    };
+
+    setTasks([...tasks, task]);
+    setNewTaskTitle("");
   }
 
   function handleToggleTaskCompletion(id: number) {
